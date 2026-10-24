@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f5f3ee" />
+  <title>CampusFind | Lost & found, together</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="CampusFind home"><span class="brand-mark">+</span><span>Campus<span class="brand-accent">Find</span></span></a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a class="nav-link active" href="#browse">Browse</a>
+      <a class="nav-link" href="#how-it-works">How it works</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Toggle dark mode"><span id="themeIcon">☾</span></button>
+      <button class="button button-primary compact" id="openReportTop" type="button"><span>＋</span> Report an item</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> The campus community board</p>
+        <h1 id="page-title">Lost something?<br /><em>Find it here.</em></h1>
+        <p class="hero-description">A simple way for our campus to return what matters. Browse recent reports or help someone out by posting what you found.</p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#browse">Browse items <span>↓</span></a>
+          <button class="text-button" id="openReportHero" type="button">Report lost or found <span>↗</span></button>
+        </div>
+      </div>
+      <div class="hero-note" aria-label="Community statistics"><span class="note-line"></span><span><strong id="returnedCount">24</strong> items returned<br />this semester</span></div>
+      <div class="hero-shape shape-one"></div><div class="hero-shape shape-two"></div>
+    </section>
+
+    <section class="browse-section" id="browse" aria-labelledby="browse-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">Community board</p><h2 id="browse-title">Recent reports <span id="resultCount">06</span></h2></div>
+        <p class="section-caption">Everything reported by students,<br />staff, and campus friends.</p>
+      </div>
+      <div class="toolbar">
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Search by item, place, or detail..." autocomplete="off" /><kbd>/</kbd></label>
+        <div class="filter-group" role="group" aria-label="Filter by report type">
+          <button class="filter-button active" data-status="all" type="button">All <span id="allCount">06</span></button>
+          <button class="filter-button" data-status="lost" type="button"><span class="status-dot lost-dot"></span> Lost</button>
+          <button class="filter-button" data-status="found" type="button"><span class="status-dot found-dot"></span> Found</button>
+        </div>
+        <label class="select-wrap"><span>Category</span><select id="categoryFilter"><option value="all">All categories</option><option value="Tech">Tech</option><option value="Bags">Bags</option><option value="Keys">Keys</option><option value="Clothing">Clothing</option><option value="Cards">Cards & IDs</option><option value="Other">Other</option></select></label>
+      </div>
+      <div class="item-grid" id="itemGrid" aria-live="polite"></div>
+      <div class="empty-state" id="emptyState" hidden><div class="empty-icon">⌕</div><h3>No items match that search</h3><p>Try a different word or clear one of the filters.</p><button class="text-button" id="clearFilters" type="button">Clear all filters <span>↗</span></button></div>
+    </section>
+
+    <section class="how-section" id="how-it-works" aria-labelledby="how-title">
+      <div><p class="eyebrow">Make a difference</p><h2 id="how-title">Small acts,<br /><em>big returns.</em></h2></div>
+      <div class="steps"><div class="step"><span>01</span><h3>Spot a report</h3><p>Search by the details you remember, then open a card to connect.</p></div><div class="step"><span>02</span><h3>Reach out</h3><p>Message the reporter through the contact form. Keep personal details private.</p></div><div class="step"><span>03</span><h3>Close the loop</h3><p>Once reunited, mark the item returned so the board stays fresh.</p></div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><a class="brand" href="#top"><span class="brand-mark">+</span><span>Campus<span class="brand-accent">Find</span></span></a><p>Made for a more connected campus.</p><span class="footer-year">© 2024 CampusFind</span></footer>
+
+  <div class="modal-backdrop" id="reportModal" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="reportTitle"><button class="modal-close" data-close-modal type="button" aria-label="Close report form">×</button><p class="eyebrow">Add to the board</p><h2 id="reportTitle">Report an item</h2><p class="modal-intro">Give your campus community enough detail to help.</p><form id="reportForm"><div class="form-row"><label>I'm reporting a <select name="status" required><option value="lost">Lost item</option><option value="found">Found item</option></select></label><label>Category <select name="category" required><option>Tech</option><option>Bags</option><option>Keys</option><option>Clothing</option><option>Cards</option><option>Other</option></select></label></div><label>Item name <input name="title" required placeholder="e.g. Blue Hydro Flask" /></label><label>Where was it last seen? <input name="location" required placeholder="e.g. Library, 2nd floor" /></label><label>Details <textarea name="description" rows="3" required placeholder="Color, brand, distinguishing marks..."></textarea></label><div class="upload-area"><input id="photoInput" name="photo" type="file" accept="image/*" /><label for="photoInput" class="upload-label"><span class="upload-icon">▧</span><span><strong>Attach a photo</strong><small>JPG, PNG up to 5MB</small></span><span class="upload-arrow">↗</span></label><div class="photo-preview" id="photoPreview" hidden></div></div><button class="button button-dark submit-button" type="submit">Post report <span>↗</span></button></form></section></div>
+
+  <div class="modal-backdrop" id="contactModal" hidden><section class="modal contact-modal" role="dialog" aria-modal="true" aria-labelledby="contactTitle"><button class="modal-close" data-close-modal type="button" aria-label="Close contact form">×</button><p class="eyebrow">Connect safely</p><h2 id="contactTitle">Contact reporter</h2><p class="modal-intro" id="contactIntro">Send a message about this report.</p><form id="contactForm"><input type="hidden" name="itemId" /><label>Your name <input name="name" required placeholder="e.g. Alex Morgan" /></label><label>Your message <textarea name="message" rows="4" required placeholder="I think this might be mine because..."></textarea></label><button class="button button-dark submit-button" type="submit">Send message <span>↗</span></button></form></section></div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
