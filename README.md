@@ -1,6 +1,6 @@
 # CampusFind
 
-A dependency-free lost and found board for a campus community.
+A dependency-free campus lost and found board built with HTML, CSS, and JavaScript.
 
 ## Run
 
